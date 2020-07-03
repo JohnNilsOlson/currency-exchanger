@@ -16,6 +16,8 @@ export class Exchange {
     let apiResponse = await getRates();
     if (!apiResponse) {
       $('#output').text('Sorry, there was an error handling your request.');
+    } else if (apiResponse.result === "error") {
+      $('#output').text(Object.values(apiResponse));
     } else {
       let rateArray = Object.entries(apiResponse.conversion_rates);
       rateArray.forEach((i) => {
