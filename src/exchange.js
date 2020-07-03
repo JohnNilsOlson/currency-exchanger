@@ -3,8 +3,7 @@ import $ from "jquery";
 import { getRates } from './../src/exchange-service';
 
 export class Exchange {
-  constructor(from, to, value) {
-    this.from = from;
+  constructor(to, value) {
     this.to = to;
     this.value = value;
     this.code;
@@ -25,7 +24,7 @@ export class Exchange {
           this.code = i[0];
           this.conversionRate = i[1];
           this.convertedValue = (this.value * this.conversionRate).toFixed(2);
-          $('#output').text(this.value + ' ' + this.from + ' is equal to ' + this.convertedValue + ' ' + this.to);
+          $('#output').text('At the current rate of ' +this.conversionRate + ', ' + this.value + ' USD' + ' is equal to ' + this.convertedValue + ' ' + this.to);
           break;
         } else {
           $('#output').text('Sorry, this currency is not supported.');

@@ -13,7 +13,6 @@ Users can find the current exchange rates for various currencies.
 |Behavior|Example Input|Example Output|
 |----|----|----|
 | Program offers a list of available currencies to exchange | - | USD, AED, ARS, AUD, BGN, etc... |
-| Program allows user to select currency to exchange | USD -> GPB | - |
 | Program displays current exchange rate | USD -> GPB | 0.8004 |
 | Program allows user to input currency value | USD - 100 -> GPB | - |
 | Program displays exchanged value | USD - 100 -> GPB | GPB - 80.04 |

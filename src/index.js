@@ -6,13 +6,12 @@ import $ from "jquery";
 import { Exchange } from './../src/exchange'; 
 
 $(document).ready(function() {
-  $('#convert').submit(function(event) {
+  $('#exchange').submit(function(event) {
     event.preventDefault();
 
-    const from = $('#currency-type-from').val();
     const to = $('#currency-type-to').val();
     const value = parseInt($('#amount').val());
 
-    (new Exchange(from, to, value)).convert();
+    (new Exchange(to, value)).convert();
   });
 });
