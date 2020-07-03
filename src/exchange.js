@@ -15,7 +15,7 @@ export class Exchange {
   async convert() {
     let apiResponse = await getRates();
     if (!apiResponse) {
-      $('#error').text('There was an error handling your request');
+      $('#output').text('Sorry, there was an error handling your request.');
     } else {
       let rateArray = Object.entries(apiResponse.conversion_rates);
       rateArray.forEach((i) => {
@@ -23,6 +23,7 @@ export class Exchange {
           this.code = i[0];
           this.conversionRate = i[1];
           this.convertedValue = (this.value * this.conversionRate);
+          $('#output').text(this.value + ' ' + this.from + ' is equal to ' + this.convertedValue + ' ' + this.to);
         }
       });    
     }
