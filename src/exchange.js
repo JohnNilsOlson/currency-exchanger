@@ -20,14 +20,17 @@ export class Exchange {
       $('#output').text(Object.values(apiResponse));
     } else {
       let rateArray = Object.entries(apiResponse.conversion_rates);
-      rateArray.forEach((i) => {
+      for (let i of rateArray) {
         if (i.includes(this.to) === true) {
           this.code = i[0];
           this.conversionRate = i[1];
           this.convertedValue = (this.value * this.conversionRate);
           $('#output').text(this.value + ' ' + this.from + ' is equal to ' + this.convertedValue + ' ' + this.to);
+          break;
+        } else {
+          $('#output').text('Sorry, this currency is not supported.')
         }
-      });    
+      }    
     }
   }
 }
