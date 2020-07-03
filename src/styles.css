@@ -6,3 +6,9 @@
   justify-content: center;
   align-items: center;
 }
+
+.btn-default {
+  border-color: lightgray;
+  border-radius: 5px;
+  width: 100%;
+}
