@@ -24,11 +24,11 @@ export class Exchange {
         if (i.includes(this.to) === true) {
           this.code = i[0];
           this.conversionRate = i[1];
-          this.convertedValue = (this.value * this.conversionRate);
+          this.convertedValue = (this.value * this.conversionRate).toFixed(2);
           $('#output').text(this.value + ' ' + this.from + ' is equal to ' + this.convertedValue + ' ' + this.to);
           break;
         } else {
-          $('#output').text('Sorry, this currency is not supported.')
+          $('#output').text('Sorry, this currency is not supported.');
         }
       }    
     }
