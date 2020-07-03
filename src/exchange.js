@@ -9,9 +9,10 @@ export class Exchange {
     this.value = value;
     this.code;
     this.conversionRate;
+    this.convertedValue;
   }
 
-  async findRate() {
+  async convert() {
     let apiResponse = await getRates();
     if (!apiResponse) {
       $('#error').text('There was an error handling your request');
@@ -21,6 +22,7 @@ export class Exchange {
         if (i.includes(this.to) === true) {
           this.code = i[0];
           this.conversionRate = i[1];
+          this.convertedValue = (this.value * this.conversionRate);
         }
       });    
     }
