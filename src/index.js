@@ -14,11 +14,11 @@ $(document).ready(function() {
 
     const from = $('#currency-type-from').val();
     const to = $('#currency-type-to').val();
-    const value = $('#amount').val();
+    const value = parseInt($('#amount').val());
 
     exchange = new Exchange(from, to, value);
-    console.log(exchange);
 
-    exchange.findRate();
+    exchange.convert();
+
   });
 });
