@@ -9,13 +9,14 @@ $(document).ready(function() {
 
   let exchange;
 
-  $('#exchange-amount').submit(function(event) {
+  $('#exchange').submit(function(event) {
     event.preventDefault();
 
     const from = $('#currency-type-from').val();
     const to = $('#currency-type-to').val();
     const value = parseInt($('#amount').val());
 
+    
     exchange = (new Exchange(from, to, value)).convert();
   });
 });
