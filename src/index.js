@@ -12,6 +12,10 @@ $(document).ready(function() {
     const to = $('#currency-type-to').val();
     const value = parseInt($('#amount').val());
 
-    (new Exchange(to, value)).convert();
+    let newExchange = new Exchange(to, value);
+
+    $.when(newExchange.convert()).done(function() {
+      $('#output').text(newExchange.output);
+    });
   });
 });

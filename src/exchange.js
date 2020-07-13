@@ -1,5 +1,3 @@
-import $ from "jquery";
-
 import { getRates } from './../src/exchange-service';
 
 export class Exchange {
@@ -9,14 +7,15 @@ export class Exchange {
     this.code;
     this.conversionRate;
     this.convertedValue;
+    this.output;
   }
 
   async convert() {
     let apiResponse = await getRates();
     if (!apiResponse) {
-      $('#output').text('Sorry, there was an error handling your request.');
+      this.output = 'Sorry, there was an error handling your request.';
     } else if (apiResponse.result === "error") {
-      $('#output').text(Object.values(apiResponse));
+      this.output = Object.values(apiResponse);
     } else {
       let rateArray = Object.entries(apiResponse.conversion_rates);
       for (let i of rateArray) {
@@ -24,10 +23,10 @@ export class Exchange {
           this.code = i[0];
           this.conversionRate = i[1];
           this.convertedValue = (this.value * this.conversionRate).toFixed(2);
-          $('#output').text('At the current rate of ' +this.conversionRate + ', ' + this.value + ' USD' + ' is equal to ' + this.convertedValue + ' ' + this.to);
+          this.output = 'At the current rate of ' + this.conversionRate + ', ' + this.value + ' USD' + ' is equal to ' + this.convertedValue + ' ' + this.to;
           break;
         } else {
-          $('#output').text('Sorry, this currency is not supported.');
+          this.output = 'Sorry, this currency is not supported.';
         }
       }    
     }
